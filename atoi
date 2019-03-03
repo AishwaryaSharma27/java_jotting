@@ -1,0 +1,33 @@
+class Solution {
+    public int myAtoi(String str) {
+        int sign = 1;
+        String strTrim = str.trim();
+        int index = 0;
+        long num = 0;
+        System.out.println(strTrim);
+        if(strTrim.length() == 0)
+        {
+            return 0;
+        }
+        if(strTrim.charAt(index) == '-' || strTrim.charAt(index) == '+')
+        {
+            sign = strTrim.charAt(index) == '-' ? -1: 1;
+            index++;
+        }
+        while (index < strTrim.length())
+        {
+            int n = strTrim.charAt(index) - '0';
+            if (n < 0 || n > 9)
+            {break;}
+            num = num*10 + n;
+           
+            if (num > Integer.MAX_VALUE)
+            {
+                return sign == 1? Integer.MAX_VALUE : Integer.MIN_VALUE;
+            }
+             index ++;
+        }
+        return (int)num * sign;
+        
+    }
+}
