@@ -1,0 +1,37 @@
+class Solution {
+    public int lengthOfLongestSubstring(String s)
+    {
+        String checked = "";
+        int len= 0;
+        if (s.equals(" ")) 
+        {
+            return 1;
+        } 
+        else
+        {
+             for (int count = 0; count < s.length(); count ++)
+             {
+                 if(checked.indexOf(s.charAt(count)) == -1)
+                {
+                    checked += s.charAt(count);
+                 } 
+                 else
+                 {
+                     int idx = checked.indexOf(s.charAt(count));
+                    if (len < checked.length())
+                     {
+                        len = checked.length();             
+                      }
+                    //checked = "";
+                     checked = checked.substring(idx+1);
+                     checked += s.charAt(count);
+                }
+             }
+            if(checked.length() > len)
+            {
+                return checked.length();
+            }
+            return len;
+        }
+    }
+}
