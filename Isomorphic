@@ -1,0 +1,35 @@
+class Solution {
+    public boolean isIsomorphic(String s, String t) {
+        if (s.length() != t.length())
+        {
+            return false;
+        }
+        else
+        {
+            char [] arr = s.toCharArray();
+            HashMap <Character, Character> map = new HashMap <Character, Character> ();
+            for (int i = 0; i < arr.length; i++)
+            {
+                if (map.containsKey(arr[i]))
+                {
+                    System.out.println(map.get(arr[i]));
+                    System.out.println(t.charAt(i));
+                    if (map.get(arr[i]) != t.charAt(i))
+                    {
+                        return false;
+                    }
+                }
+                else 
+                {
+                    if (map.containsValue(t.charAt(i)))
+                    {
+                        return false;
+                    }
+                    map.put(arr[i], t.charAt(i));
+                }
+            }
+            return true;
+        }
+        
+    }
+}
